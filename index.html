@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇游戏</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>贪吃蛇</h1>
+            <div class="score-panel">
+                <div class="score-item">
+                    <span class="label">当前分数</span>
+                    <span class="value" id="currentScore">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">最高分</span>
+                    <span class="value" id="highScore">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <canvas id="gameCanvas"></canvas>
+            <div class="game-over-overlay" id="gameOverOverlay">
+                <div class="game-over-content">
+                    <h2>游戏结束</h2>
+                    <p>最终得分: <span id="finalScore">0</span></p>
+                    <button class="btn btn-primary" id="restartBtn">重新开始</button>
+                </div>
+            </div>
+            <div class="start-overlay" id="startOverlay">
+                <div class="start-content">
+                    <h2>贪吃蛇游戏</h2>
+                    <p>使用方向键控制蛇的移动</p>
+                    <button class="btn btn-primary" id="startBtn">开始游戏</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="game-controls">
+            <button class="btn btn-secondary" id="pauseBtn">暂停</button>
+            <button class="btn btn-secondary" id="resumeBtn">继续</button>
+            <button class="btn btn-danger" id="resetBtn">重新开始</button>
+        </footer>
+
+        <div class="instructions">
+            <h3>游戏说明</h3>
+            <ul>
+                <li>↑ ↓ ← → 方向键控制蛇的移动方向</li>
+                <li>吃到食物可以增加分数和蛇的长度</li>
+                <li>碰到边界或自己的身体游戏结束</li>
+                <li>空格键暂停/继续游戏</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
