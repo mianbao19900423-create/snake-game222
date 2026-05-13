@@ -22,13 +22,9 @@ const supabaseClient = window.supabase.createClient(
     SUPABASE_KEY
 );
 
-const params = new URLSearchParams(window.location.search);
+const playerName = "VIP用户";
 
-const playerName = params.get("client_reference_id");
-
-if(playerName){
-
-    supabaseClient
+supabaseClient
     .from("player")
     .insert([
         {
@@ -50,8 +46,6 @@ if(playerName){
         alert(JSON.stringify(err));
 
     });
-
-}
 
 </script>
 
