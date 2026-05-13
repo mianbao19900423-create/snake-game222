@@ -275,3 +275,21 @@ body {
         text-align: center;
     }
 }
+.leaderboard {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 12px;
+   color: #333;
+}
+
+.leaderboard h2 {
+    margin-bottom: 10px;
+}
+
+.leaderboard-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
