@@ -38,9 +38,11 @@ class SnakeGame {
         this.gameOverOverlay = document.getElementById('gameOverOverlay');
         this.startOverlay = document.getElementById('startOverlay');
         this.finalScoreElement = document.getElementById('finalScore');
+        this.leaderboardList = document.getElementById('leaderboardList');
         
         // 初始化
         this.init();
+        this.loadLeaderboard();
         this.bindEvents();
     }
     
@@ -157,6 +159,8 @@ if (playerName) {
         ])
         .then((result) => {
             console.log("分数上传成功", result);
+
+           this.loadLeaderboard();
         });
 }
 
@@ -392,7 +396,34 @@ if (playerName) {
             this.startGame();
         });
     }
-    
+
+    async loadLeaderboard() {
+    const { data, error } = await supabaseClient
+        .from('scores')
+        .select('*')
+        .order('score', { ascending: false })
+        .limit(10);
+
+    if (error) {
+        console.log(error);
+        return;
+    }
+
+    this.leaderboardList.innerHTML = '';
+
+    data.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'leaderboard-item';
+
+        div.innerHTML = `
+            <span>${index + 1}. ${item.player}</span>
+            <span>${item.score}</span>
+        `;
+
+        this.leaderboardList.appendChild(div);
+    });
+}
+
     handleKeydown(e) {
         // 方向键控制
         switch (e.key) {
