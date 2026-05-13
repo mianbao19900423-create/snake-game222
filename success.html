@@ -34,11 +34,20 @@ if(playerName) {
                 vip: true
             }
         ])
-        .then(() => {
+        .then((result) => {
 
-            document.body.innerHTML += "<h2>VIP 开通成功！</h2>";
+    console.log(result);
 
-        });
+    document.body.innerHTML += "<h2>VIP 开通成功！</h2>";
+
+})
+.catch((err) => {
+
+    console.log(err);
+
+    alert(JSON.stringify(err));
+
+});
 
 }
 
