@@ -484,9 +484,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const playerName = prompt("请输入你的名字");
 
-        localStorage.setItem("vipPlayer", playerName);
+        if (!playerName) {
 
-        window.location.href = "https://buy.stripe.com/test_14A9AVa7echEgCu1au6g800";
+            alert("请输入名字");
+
+            return;
+
+        }
+
+        window.location.href =
+        "https://buy.stripe.com/test_14A9AVa7echEgCu1au6g800?client_reference_id="
+        + encodeURIComponent(playerName);
 
     });
 
