@@ -27,7 +27,7 @@ const playerName = localStorage.getItem("vipPlayer");
 if(playerName){
 
     supabaseClient
-    .from("vip_users")
+    .from("player")
     .insert([
         {
             player: playerName,
