@@ -1,6 +1,8 @@
 const SUPABASE_URL = "https://khafxktptrtrqhynxlzz.supabase.co";
 const SUPABASE_KEY = "sb_publishable_5Ig8kJEw1og5slxQpiOjtw_osjqENrZ";
 
+const stripe = Stripe("pk_test_51TWSqVQpDt6fGhD8SFMoC9sq7L9nOG4p7IU7EQHhItRExIhbHHf9sl4rFWErEWJtwv2ea73tPM1c6pMDHRdDeJ2y00fudXMcOM");
+
 const supabaseClient = supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
@@ -475,5 +477,17 @@ if (playerName) {
 
 // 页面加载完成后初始化游戏
 document.addEventListener('DOMContentLoaded', () => {
+
     new SnakeGame();
+
+    document.getElementById("vipBtn").addEventListener("click", () => {
+
+        const playerName = prompt("请输入你的名字");
+
+        localStorage.setItem("vipPlayer", playerName);
+
+        window.location.href = "https://buy.stripe.com/test_14A9AVa7echEgCu1au6g800";
+
+    });
+
 });
