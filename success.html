@@ -22,7 +22,9 @@ const supabaseClient = window.supabase.createClient(
     SUPABASE_KEY
 );
 
-const playerName = localStorage.getItem("vipPlayer");
+const params = new URLSearchParams(window.location.search);
+
+const playerName = params.get("client_reference_id");
 
 if(playerName){
 
