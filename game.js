@@ -1,3 +1,10 @@
+const SUPABASE_URL = "https://khafxktptrtrqhynxlzz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_5Ig8kJEw1og5slxQpiOjtw_osjqENrZ";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+ );
 class SnakeGame {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
@@ -133,10 +140,27 @@ class SnakeGame {
         
         // 显示游戏结束界面
         this.finalScoreElement.textContent = this.score;
-        setTimeout(() => {
-            this.gameOverOverlay.classList.add('show');
-        }, 100);
-    }
+      setTimeout(() => {
+    this.gameOverOverlay.classList.add('show');
+}, 100);
+
+const playerName = prompt("请输入你的名字");
+
+if (playerName) {
+    supabaseClient
+        .from('scores')
+        .insert([
+            {
+                player: playerName,
+                score: this.score
+            }
+        ])
+        .then((result) => {
+            console.log("分数上传成功", result);
+        });
+}
+
+}
     
     update() {
         if (this.gameState !== 'playing') return;
